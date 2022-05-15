@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">FirstApp</string>
-    <string name="Greeting">NMedia!</string>
+    <string name="app_name">NMedia</string>
+    <string name="Greeting">Good day, NMedia</string>
 </resources>
