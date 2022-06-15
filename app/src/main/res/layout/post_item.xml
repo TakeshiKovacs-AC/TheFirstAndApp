@@ -13,6 +13,7 @@
         android:contentDescription="@string/avatar_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -48,7 +49,8 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic_options_24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text"
@@ -74,7 +76,8 @@
         android:background="@android:color/transparent"
         android:src="@android:drawable/ic_menu_compass"
         app:layout_constraintStart_toStartOf="@id/text"
-        app:layout_constraintTop_toBottomOf="@id/lowerBarrier" />
+        app:layout_constraintTop_toBottomOf="@id/lowerBarrier"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/lowerBarrier"
@@ -104,7 +107,8 @@
         android:src="@android:drawable/ic_menu_share"
         android:tint="#040000"
         app:layout_constraintStart_toEndOf="@id/likesCount"
-        app:layout_constraintTop_toBottomOf="@id/lowerBarrier" />
+        app:layout_constraintTop_toBottomOf="@id/lowerBarrier"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/sharesCount"
@@ -120,11 +124,12 @@
         android:id="@+id/viewsIcon"
         android:layout_width="@dimen/iconSize"
         android:layout_height="@dimen/iconSize"
+        android:layout_marginEnd="4dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toStartOf="@id/viewCount"
         app:layout_constraintTop_toBottomOf="@id/lowerBarrier"
         app:srcCompat="@android:drawable/ic_menu_view"
-        android:layout_marginEnd="4dp"/>
+        tools:ignore="ImageContrastCheck" />
 
 
     <androidx.appcompat.widget.AppCompatTextView
