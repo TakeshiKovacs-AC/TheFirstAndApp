@@ -5,6 +5,7 @@ data class Post (
     val date: String,
     val content: String,
     val id: Long,
-    var like: Int = 0,
-    var isLiked: Boolean = false
+    var like: Int,
+    var share: Int,
+    val isLiked: Boolean = false
         )

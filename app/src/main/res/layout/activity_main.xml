@@ -6,14 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/Greeting"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="@dimen/postAvatarSize"
@@ -48,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="@id/authorName"
         app:layout_constraintStart_toStartOf="@id/authorName"
         app:layout_constraintTop_toBottomOf="@id/authorName"
-        tools:text="18.05.2022" />
+        tools:text="23.06.2022" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/options"
@@ -101,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/iconSize"
         android:layout_marginStart="4dp"
-        android:text="@string/_999"
+        android:text="@string/_0"
         android:textAlignment="center"
         android:textColor="#050505"
         app:layout_constraintStart_toEndOf="@id/likes"
@@ -124,13 +116,13 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/iconSize"
         android:layout_marginStart="4dp"
-        android:text="@string/_2689432"
+        android:text="@string/_0"
         android:textAlignment="center"
         android:textColor="#070707"
         app:layout_constraintStart_toEndOf="@id/shares"
         app:layout_constraintTop_toBottomOf="@id/lowerBarrier" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/viewsIcon"
         android:layout_width="@dimen/iconSize"
         android:layout_height="@dimen/iconSize"
