@@ -18,19 +18,19 @@ class PostRepositoryImpl: PostRepository {
 
     override fun get(): LiveData<Post> = data
     override fun like() {
-        post = post.copy(isLiked = !post.isLiked, like = post.like)
+        post = post.copy(isLiked = !post.isLiked)
+        if (post.isLiked) post.like++ else post.like--
+        Utils.figures(post.like)
         data.value = post
     }
 
-    fun figures(quantityContainer: Int): String {
-        return when (quantityContainer) {
-            in 0..999 -> quantityContainer.toString()
-            in 1000..9999 -> String.format("%.1f", (quantityContainer / 1000.0)) + "K"
-            in 10_000..999_999 -> "${(quantityContainer / 1000)}K"
-            in 1_000_000..999_999_999 -> String.format("%.1f", (quantityContainer / 1_000_000.0)) + "M"
-            else -> "Недопустимое число"
-        }
+    override fun share() {
+        post.share++
+        Utils.figures(post.share)
+        data.value = post
     }
+
+
 }
 
 

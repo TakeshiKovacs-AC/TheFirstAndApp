@@ -11,8 +11,6 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val postRepImpl = PostRepositoryImpl()
-
         val viewModel: PostViewModel by viewModels()
         viewModel.data.observe(this) { post ->
             with(binding) {
@@ -24,17 +22,14 @@ class MainActivity : AppCompatActivity() {
                 likes.setImageResource(
                     if (post.isLiked) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
                 )
-                if (post.isLiked) post.like++ else post.like--
-                binding.likesCount.text = postRepImpl.figures(post.like)
-
-                binding.shares.setOnClickListener {
-                    post.share++
-                    sharesCount.text = postRepImpl.figures(post.share)
-                }
             }
+        }
+        binding.shares.setOnClickListener {
+            viewModel.clickedShare()
         }
         binding.likes.setOnClickListener {
             viewModel.clickedLike()
         }
     }
 }
+
