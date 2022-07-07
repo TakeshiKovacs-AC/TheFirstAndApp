@@ -37,19 +37,15 @@ class PostRepositoryImpl : PostRepository {
     override fun getAll(): LiveData<List<Post>> = data
     override fun like(postId: Long) {
         posts = posts.map { post ->
-            if (postId == post.id) post.copy(isLiked = !post.isLiked)
+            if (postId == post.id && !post.isLiked) post.copy(isLiked = !post.isLiked, like = post.like+1)
+            else if(postId == post.id && post.isLiked) post.copy(isLiked = !post.isLiked, like = post.like-1)
             else post
         }
-
-        for (post in posts) {
-            if (postId == post.id) post.like++ else post.like
-            Utils.figures(post.like)
-        }
     }
+
     override fun share(postId: Long) {
-        for (post in posts) {
-            if (postId == post.id) post.share++
-            Utils.figures(post.share)
+        posts = posts.map { post ->
+            if (postId == post.id) post.copy(share = post.share+1) else post
         }
     }
 }

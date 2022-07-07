@@ -25,11 +25,13 @@ class PostsAdapter(
         init {
             binding.shares.setOnClickListener {
                 clickedShare(post)
+                Utils.figures(post.share)
             }
         }
         init {
             binding.likes.setOnClickListener {
                 clickedLike(post)
+                Utils.figures(post.like)
             }
         }
 
