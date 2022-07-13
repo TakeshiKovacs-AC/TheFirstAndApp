@@ -2,5 +2,13 @@
     <string name="app_name">NMedia</string>
     <string name="Greeting">Good day, NMedia</string>
     <string name="avatar_description">Author avatar</string>
-    <string name="text" translatable="false">Добро пожаловать в Нетологию!</string>
+    <string name="text" translatable="false">Netology greetings you!</string>
+    <string name="remove">Remove</string>
+    <string name="_0" />
+    <string name="_456" />
+    <string name="like" translatable="false">Like</string>
+    <string name="_45" translatable="false">45</string>
+    <string name="hint">Input the text</string>
+    <string name="update">Update</string>
+    <string name="cancelEdit" translatable="false">cancelEdit</string>
 </resources>

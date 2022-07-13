@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 
 class PostRepositoryImpl : PostRepository {
 
+    private var nextId = GENERATION_POSTS_AMOUNT.toLong()
+
     private var posts
         get() = checkNotNull(data.value)
         set(value) {
@@ -14,18 +16,14 @@ class PostRepositoryImpl : PostRepository {
     private val data: MutableLiveData<List<Post>>
 
     init {
-        val initialPosts = List(1000) { index ->
+        val initialPosts = List(GENERATION_POSTS_AMOUNT) { index ->
             Post(
                 author = "Anton",
                 date = "23.06.2022",
-                content = "I would definitely say there's a different type of " +
-                        "camaraderie for guys whose dads played in the NBA,\" said Pippen Jr., 21, " +
-                        "who went undrafted out of Vanderbilt and signed a two-way contract with L.A. " +
-                        "last week. \"Because going through this whole process since we were little " +
-                        "kids, there's always a different type of pressure on us, I would say. " +
-                        "A different type of expectation. So I tip my hat to all those guys, because " +
-                        "playing this game when your father is so-and-so is a different type of pressure " +
-                        "to play at",
+                content = "Down the river drift an axe/" +
+                        "From the town of Byron/" +
+                        "Let it float by itself/" +
+                        "Fucking piece of iron!",
                 id = index + 1L,
                 like = 0,
                 share = 0
@@ -47,6 +45,29 @@ class PostRepositoryImpl : PostRepository {
         posts = posts.map { post ->
             if (postId == post.id) post.copy(share = post.share+1) else post
         }
+    }
+
+    override fun delete(postId: Long) {
+        data.value = posts.filterNot { it.id == postId }
+    }
+
+    override fun save(post: Post) {
+        if (post.id == PostRepository.NEW_POST_ID) insert (post) else update(post)
+    }
+
+    private fun update(post: Post) {
+        data.value = posts.map {
+            if(it.id == post.id) post else it
+        }
+    }
+
+    private fun insert(post: Post) {
+        data.value = listOf(
+            post.copy(id = ++nextId)
+        ) + posts
+    }
+    private companion object {
+        const val GENERATION_POSTS_AMOUNT = 1000
     }
 }
 

@@ -2,35 +2,50 @@ package ru.netology.myapp
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.myapp.databinding.PostItemBinding
 
-typealias ClickedButtonListener = (Post) -> Unit
-
 class PostsAdapter(
-    private val clickedLike: ClickedButtonListener,
-    private val clickedShare: ClickedButtonListener
+    private val postListener: PostListener
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(
         private val binding: PostItemBinding,
-        private val clickedLike: ClickedButtonListener,
-        private val clickedShare: ClickedButtonListener
+        listener: PostListener
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var post: Post
+        private val popupMenu by lazy {
+            PopupMenu(itemView.context, binding.options).apply {
+                inflate(R.menu.options_post)
+                setOnMenuItemClickListener { menuItem ->
+                    when(menuItem.itemId) {
+                        R.id.remove -> {
+                            listener.clickedDelete(post)
+                            true
+                        }
+                        R.id.update -> {
+                            listener.clickUpdate(post)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }
+        }
 
         init {
             binding.shares.setOnClickListener {
-                clickedShare(post)
+                listener.clickedShare(post)
                 Utils.figures(post.share)
             }
         }
         init {
             binding.likes.setOnClickListener {
-                clickedLike(post)
+                listener.clickedLike(post)
                 Utils.figures(post.like)
             }
         }
@@ -46,6 +61,7 @@ class PostsAdapter(
                 likes.setImageResource(
                     if (post.isLiked) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
                 )
+                options.setOnClickListener { popupMenu.show() }
             }
         }
     }
@@ -55,7 +71,7 @@ class PostsAdapter(
         val binding = PostItemBinding.inflate(
             inflater, parent, false
         )
-        return ViewHolder(binding, clickedLike, clickedShare)
+        return ViewHolder(binding, postListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
