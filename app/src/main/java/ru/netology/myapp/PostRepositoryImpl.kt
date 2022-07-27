@@ -20,10 +20,10 @@ class PostRepositoryImpl : PostRepository {
             Post(
                 author = "Anton",
                 date = "23.06.2022",
-                content = "Down the river drift an axe/" +
-                        "From the town of Byron/" +
-                        "Let it float by itself/" +
-                        "Fucking piece of iron!",
+                content = "Down the river drift an axe," + "\n"
+                        + "From the town of Byron," + "\n"
+                        + "Let it float by itself," + "\n"
+                        + "Fucking piece of iron!",
                 id = index + 1L,
                 like = 0,
                 share = 0

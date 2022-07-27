@@ -3,4 +3,6 @@
     <dimen name="commonSpacing">16dp</dimen>
     <dimen name="postAvatarSize">48dp</dimen>
     <dimen name="iconSize">22dp</dimen>
+    <dimen name="icon_button_min_size">48dp</dimen>
+    <dimen name="optionsButton">24dp</dimen>
 </resources>

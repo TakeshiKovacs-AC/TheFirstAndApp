@@ -42,15 +42,14 @@
         app:layout_constraintTop_toBottomOf="@id/authorName"
         tools:text="23.06.2022" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/options"
+        style="@style/Widget.AppTheme.Menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_options_24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text"
@@ -69,15 +68,28 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="avatar, date, options" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/likes"
-        android:layout_width="@dimen/iconSize"
-        android:layout_height="@dimen/iconSize"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_baseline_favorite_border_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppTheme.OnLikePush"
+        android:checkable="true"
+        tools:checked = "true"
         app:layout_constraintStart_toStartOf="@id/text"
         app:layout_constraintTop_toBottomOf="@id/lowerBarrier"
+        tools:text="1050"
         />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/shares"
+        style="@style/Widget.AppTheme.OnSharePush"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:textColor="#070707"
+        app:layout_constraintStart_toEndOf="@id/likes"
+        app:layout_constraintTop_toBottomOf="@id/lowerBarrier"
+        tools:text="20" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/lowerBarrier"
@@ -87,41 +99,6 @@
         app:constraint_referenced_ids="text"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="96dp" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/likesCount"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/iconSize"
-        android:layout_marginStart="4dp"
-        android:text="@string/_0"
-        android:textAlignment="center"
-        android:textColor="#050505"
-        app:layout_constraintStart_toEndOf="@id/likes"
-        app:layout_constraintTop_toBottomOf="@id/lowerBarrier" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/shares"
-        android:layout_width="@dimen/iconSize"
-        android:layout_height="@dimen/iconSize"
-        android:layout_marginStart="16dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_baseline_share_24"
-        android:tint="#040000"
-        app:layout_constraintStart_toEndOf="@id/likesCount"
-        app:layout_constraintTop_toBottomOf="@id/lowerBarrier"
-        />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/sharesCount"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/iconSize"
-        android:layout_marginStart="4dp"
-        android:text="@string/_0"
-        android:textAlignment="center"
-        android:textColor="#070707"
-        app:layout_constraintStart_toEndOf="@id/shares"
-        app:layout_constraintTop_toBottomOf="@id/lowerBarrier" />
-
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/viewsIcon"
