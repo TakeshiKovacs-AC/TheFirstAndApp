@@ -3,4 +3,9 @@
     <string name="app_name">НМедиа</string>
     <string name="Greeting">Добрый день, НМедиа!</string>
     <string name="avatar_description">Аватар автора</string>
+    <string name="remove">Удалить</string>
+    <string name="_0" />
+    <string name="_456" />
+    <string name="hint">Введите текст</string>
+    <string name="update">Редактировать</string>
 </resources>

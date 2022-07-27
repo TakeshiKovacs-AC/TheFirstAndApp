@@ -2,19 +2,13 @@
     <string name="app_name">NMedia</string>
     <string name="Greeting">Good day, NMedia</string>
     <string name="avatar_description">Author avatar</string>
-    <string name="_0">0</string>
-    <string name="_8">8</string>
-    <string name="_456">456</string>
-    <string name="_999">999</string>
-    <string name="_9999">9999</string>
-    <string name="_1885">1885</string>
-    <string name="_1043">1043</string>
-    <string name="_1111">1111</string>
-    <string name="_20000">20000</string>
-    <string name="_998">998</string>
-    <string name="_1125">1125</string>
-    <string name="_5632">5632</string>
-    <string name="_2689432">2689432</string>
-    <string name="text">Добро пожаловать в Нетологию!</string>
-    <string name="_3">3</string>
+    <string name="text" translatable="false">Netology greetings you!</string>
+    <string name="remove">Remove</string>
+    <string name="_0" />
+    <string name="_456" />
+    <string name="like" translatable="false">Like</string>
+    <string name="_45" translatable="false">45</string>
+    <string name="hint">Input the text</string>
+    <string name="update">Update</string>
+    <string name="cancelEdit" translatable="false">cancelEdit</string>
 </resources>
