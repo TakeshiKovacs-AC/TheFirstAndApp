@@ -48,6 +48,7 @@ class PostsAdapter(
                 listener.clickedLike(post)
                 Utils.figures(post.like)
             }
+            binding.options.setOnClickListener { popupMenu.show() }
         }
 
         fun bind(post: Post) {
@@ -56,12 +57,9 @@ class PostsAdapter(
                 authorName.text = post.author
                 date.text = post.date
                 text.text = post.content
-                sharesCount.text = post.share.toString()
-                likesCount.text = post.like.toString()
-                likes.setImageResource(
-                    if (post.isLiked) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
-                )
-                options.setOnClickListener { popupMenu.show() }
+                shares.text = post.share.toString()
+                likes.text = post.like.toString()
+                likes.isChecked = post.isLiked
             }
         }
     }
