@@ -11,4 +11,12 @@
     <string name="hint">Input the text</string>
     <string name="update">Update</string>
     <string name="cancelEdit" translatable="false">cancelEdit</string>
+    <string name="hello_magic">Hello Magic!</string>
+    <string name="chooser_share_post">Share post</string>
+    <string name="i_m_traveling_down_the_river">Im traveling down the river!</string>
+    <string name="description_post_save">Save</string>
+    <string name="add_post">Add post</string>
+    <string name="noText">Empty text</string>
+    <string name="secondActivity" translatable="false">secondActivity</string>
+    <string name="videoPlayer" translatable="false">Video</string>
 </resources>

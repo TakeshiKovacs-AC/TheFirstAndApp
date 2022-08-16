@@ -26,7 +26,8 @@ class PostRepositoryImpl : PostRepository {
                         + "Fucking piece of iron!",
                 id = index + 1L,
                 like = 0,
-                share = 0
+                share = 0,
+                video = null
             )
         }
         data = MutableLiveData(initialPosts)
@@ -54,6 +55,12 @@ class PostRepositoryImpl : PostRepository {
     override fun save(post: Post) {
         if (post.id == PostRepository.NEW_POST_ID) insert (post) else update(post)
     }
+
+    override fun play(post: Post) {
+           if ((post.video).isNullOrBlank()) return
+            else (post.video)
+        }
+
 
     private fun update(post: Post) {
         data.value = posts.map {

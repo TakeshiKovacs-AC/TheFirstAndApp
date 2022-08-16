@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.netology.myapp.databinding.PostItemBinding
 
 class PostsAdapter(
-    private val postListener: PostListener
+    private val postListener: PostListener,
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(
@@ -28,7 +28,7 @@ class PostsAdapter(
                             true
                         }
                         R.id.update -> {
-                            listener.clickUpdate(post)
+                            listener.clickUpdate(post.content)
                             true
                         }
                         else -> false
@@ -50,6 +50,7 @@ class PostsAdapter(
             }
             binding.options.setOnClickListener { popupMenu.show() }
         }
+
 
         fun bind(post: Post) {
             this.post = post
@@ -86,4 +87,5 @@ class PostsAdapter(
             oldItem == newItem
         }
     }
+
 

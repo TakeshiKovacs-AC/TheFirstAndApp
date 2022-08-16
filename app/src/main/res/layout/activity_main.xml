@@ -14,59 +14,71 @@
     tools:listitem="@layout/post_item" />
 
 
-    <ImageButton
-        android:id="@+id/saveButton"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/text"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/fab_margin"
+        android:contentDescription="@string/add_post"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addedText"
-        />
-
-    <ImageButton
-        android:id="@+id/cancelEditButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_dark"
-        android:contentDescription="@string/cancelEdit"
-        app:srcCompat="@drawable/ic_baseline_cancel_24"
-        app:layout_constraintBottom_toTopOf="@id/saveButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_add_24"
         />
 
+<!--    <ImageButton-->
+<!--        android:id="@+id/saveButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:contentDescription="@string/text"-->
+<!--        app:srcCompat="@drawable/ic_baseline_edit_24"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/addedText"-->
+<!--        />-->
 
-    <androidx.constraintlayout.widget.Barrier
-    android:id="@+id/topBar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:barrierDirection="top"
-    app:constraint_referenced_ids="addedText, saveButton"
-    />
+<!--    <ImageButton-->
+<!--        android:id="@+id/cancelEditButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@android:color/holo_red_dark"-->
+<!--        android:contentDescription="@string/cancelEdit"-->
+<!--        app:srcCompat="@drawable/ic_baseline_cancel_24"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/saveButton"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        />-->
 
-    <EditText
-        android:id="@+id/addedText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint"
-        android:inputType="textMultiLine"
-        android:background="@android:color/transparent"
-        android:padding="@dimen/commonSpacing"
-        android:importantForAutofill="no"
-        app:layout_constraintTop_toTopOf="@id/topBar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/saveButton"
-        app:layout_constraintStart_toStartOf="parent"
-        />
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/buttonsGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:constraint_referenced_ids="saveButton, cancelEditButton"
-        />
+<!--    <androidx.constraintlayout.widget.Barrier-->
+<!--        android:id="@+id/topBar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:barrierDirection="top"-->
+<!--        app:constraint_referenced_ids="addedText, saveButton"-->
+<!--        />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/addedText"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="@string/hint"-->
+<!--        android:inputType="textMultiLine"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:padding="@dimen/commonSpacing"-->
+<!--        android:importantForAutofill="no"-->
+<!--        app:layout_constraintTop_toTopOf="@id/topBar"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/saveButton"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        />-->
+
+<!--    <androidx.constraintlayout.widget.Group-->
+<!--        android:id="@+id/buttonsGroup"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="invisible"-->
+<!--        app:constraint_referenced_ids="saveButton, cancelEditButton"-->
+<!--        />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
