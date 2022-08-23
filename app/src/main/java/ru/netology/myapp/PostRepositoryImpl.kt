@@ -56,12 +56,6 @@ class PostRepositoryImpl : PostRepository {
         if (post.id == PostRepository.NEW_POST_ID) insert (post) else update(post)
     }
 
-    override fun play(post: Post) {
-           if ((post.video).isNullOrBlank()) return
-            else (post.video)
-        }
-
-
     private fun update(post: Post) {
         data.value = posts.map {
             if(it.id == post.id) post else it

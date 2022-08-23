@@ -1,6 +1,5 @@
 package ru.netology.myapp
 
-import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -17,11 +16,22 @@ class PostViewModel : ViewModel(), PostListener {
     override fun clickedDelete(post: Post) = repository.delete(post.id)
     override fun clickUpdate(content: String) {
         editEvent.value = content
+        val post = thisPost.value?.copy(
+            content = content,
+        ) ?: Post(
+            id = PostRepository.NEW_POST_ID,
+            author = "Anton",
+            content = content,
+            date = "Present days",
+            video = null
+        )
+        repository.save(post)
+        thisPost.value = null
     }
 
-    override fun clickVideo(post: Post) {
-        playVideo.call()
-        repository.play(post)
+
+    override fun clickVideo(video: String?) {
+        playVideo.value = video
     }
 
     val shareEvent = SingleLiveEvent<Post>()

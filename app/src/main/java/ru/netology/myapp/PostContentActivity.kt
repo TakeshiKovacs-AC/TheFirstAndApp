@@ -20,7 +20,6 @@ class PostContentActivity : AppCompatActivity() {
 //        val intentPostContent = postContent?.toEditable()
 //        binding.edit.text = intentPostContent
 
-
         setContentView(binding.root)
         binding.edit.requestFocus()
         binding.okButton.setOnClickListener {
@@ -40,5 +39,5 @@ class PostContentActivity : AppCompatActivity() {
         }
     }
 
-    private fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
+//    private fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
 }

@@ -1,6 +1,7 @@
 package ru.netology.myapp
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
@@ -41,6 +42,16 @@ class PostsAdapter(
             binding.shares.setOnClickListener {
                 listener.clickedShare(post)
                 Utils.figures(post.share)
+            }
+        }
+        init {
+            binding.video.setOnClickListener {
+                if (binding.link.text.isNullOrBlank()) {
+                    binding.video.visibility = View.GONE
+                    binding.link.visibility = View.GONE
+                }
+                else
+                     listener.clickVideo(post.video)
             }
         }
         init {

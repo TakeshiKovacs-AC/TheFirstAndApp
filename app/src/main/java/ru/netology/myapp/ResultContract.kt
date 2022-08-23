@@ -19,7 +19,7 @@ object ResultContractSave : ActivityResultContract<Unit, String?>() {
 object ResultContractUpdate : ActivityResultContract<String?, String?>() {
 
     override fun createIntent(context: Context, input: String?) =
-        Intent(context, PostContentActivity::class.java)
+        Intent(context, PostContentActivity::class.java).putExtra(Intent.EXTRA_TEXT, input)
 
     override fun parseResult(resultCode: Int, intent: Intent?) =
         if (resultCode == Activity.RESULT_OK) {

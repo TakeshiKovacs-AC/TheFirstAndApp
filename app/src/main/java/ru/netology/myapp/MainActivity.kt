@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.playVideo.observe(this) { video ->
            val videoIntent = Intent().apply {
                action = Intent.ACTION_SEND
-               type = "video/*"
+               type = "text/plain"
                putExtra(Intent.ACTION_VIEW, Uri.parse(video))
            }
             val playVideoIntent = Intent.createChooser(videoIntent, "Проигрываем видео")
