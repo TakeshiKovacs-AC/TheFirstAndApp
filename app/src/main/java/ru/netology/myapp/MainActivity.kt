@@ -31,9 +31,8 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.playVideo.observe(this) { video ->
            val videoIntent = Intent().apply {
-               action = Intent.ACTION_SEND
-               type = "text/plain"
-               putExtra(Intent.ACTION_VIEW, Uri.parse(video))
+               action = Intent.ACTION_VIEW
+               data = Uri.parse(video)
            }
             val playVideoIntent = Intent.createChooser(videoIntent, "Проигрываем видео")
             startActivity(playVideoIntent)
@@ -59,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         val postEditActivityLauncher = registerForActivityResult(
             ResultContractUpdate) { postContent ->
             postContent ?: return@registerForActivityResult
-            viewModel.clickUpdate(postContent)
+            viewModel.clickedSave(postContent)
         }
 
         viewModel.navigateEvent.observe(this) {

@@ -29,7 +29,7 @@ class PostsAdapter(
                             true
                         }
                         R.id.update -> {
-                            listener.clickUpdate(post.content)
+                            listener.clickUpdate(post)
                             true
                         }
                         else -> false
@@ -43,18 +43,12 @@ class PostsAdapter(
                 listener.clickedShare(post)
                 Utils.figures(post.share)
             }
-        }
-        init {
             binding.video.setOnClickListener {
-                if (binding.link.text.isNullOrBlank()) {
-                    binding.video.visibility = View.GONE
-                    binding.link.visibility = View.GONE
-                }
-                else
-                     listener.clickVideo(post.video)
+                  listener.clickVideo(post.video)
             }
-        }
-        init {
+            binding.link.setOnClickListener {
+                listener.clickVideo(post.video)
+            }
             binding.likes.setOnClickListener {
                 listener.clickedLike(post)
                 Utils.figures(post.like)
@@ -72,6 +66,13 @@ class PostsAdapter(
                 shares.text = post.share.toString()
                 likes.text = post.like.toString()
                 likes.isChecked = post.isLiked
+                if (binding.link.text.isNullOrBlank()) {
+                    binding.video.visibility = View.GONE
+                    binding.link.visibility = View.GONE
+                }
+                else
+                    binding.video.visibility = View.VISIBLE
+                    binding.link.visibility = View.VISIBLE
             }
         }
     }
