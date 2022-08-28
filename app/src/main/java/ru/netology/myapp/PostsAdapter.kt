@@ -1,6 +1,7 @@
 package ru.netology.myapp
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.netology.myapp.databinding.PostItemBinding
 
 class PostsAdapter(
-    private val postListener: PostListener
+    private val postListener: PostListener,
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(
@@ -42,14 +43,19 @@ class PostsAdapter(
                 listener.clickedShare(post)
                 Utils.figures(post.share)
             }
-        }
-        init {
+            binding.video.setOnClickListener {
+                  listener.clickVideo(post.video)
+            }
+            binding.link.setOnClickListener {
+                listener.clickVideo(post.video)
+            }
             binding.likes.setOnClickListener {
                 listener.clickedLike(post)
                 Utils.figures(post.like)
             }
             binding.options.setOnClickListener { popupMenu.show() }
         }
+
 
         fun bind(post: Post) {
             this.post = post
@@ -60,6 +66,13 @@ class PostsAdapter(
                 shares.text = post.share.toString()
                 likes.text = post.like.toString()
                 likes.isChecked = post.isLiked
+                if (binding.link.text.isNullOrBlank()) {
+                    binding.video.visibility = View.GONE
+                    binding.link.visibility = View.GONE
+                }
+                else
+                    binding.video.visibility = View.VISIBLE
+                    binding.link.visibility = View.VISIBLE
             }
         }
     }
@@ -86,4 +99,5 @@ class PostsAdapter(
             oldItem == newItem
         }
     }
+
 

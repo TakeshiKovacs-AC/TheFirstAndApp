@@ -5,4 +5,5 @@ interface PostListener {
     fun clickedShare(post: Post)
     fun clickedDelete(post: Post)
     fun clickUpdate(post: Post)
+    fun clickVideo(video: String?)
 }

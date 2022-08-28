@@ -26,7 +26,8 @@ class PostRepositoryImpl : PostRepository {
                         + "Fucking piece of iron!",
                 id = index + 1L,
                 like = 0,
-                share = 0
+                share = 0,
+                video = "https://youtu.be/K8iIO1XD1xg"
             )
         }
         data = MutableLiveData(initialPosts)
