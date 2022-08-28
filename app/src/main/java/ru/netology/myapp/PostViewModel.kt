@@ -1,10 +1,14 @@
 package ru.netology.myapp
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class PostViewModel : ViewModel(), PostListener {
-    private val repository: PostRepository = PostRepositoryImpl()
+class PostViewModel (
+    application: Application
+        ): AndroidViewModel(application), PostListener {
+    private val repository: PostRepository = FilePreferenceRepository(application)
     val data = repository.getAll()
     override fun clickedLike(post: Post) = repository.like(post.id)
     override fun clickedShare(post: Post) {

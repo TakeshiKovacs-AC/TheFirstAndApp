@@ -1,5 +1,8 @@
 package ru.netology.myapp
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Post (
     val author: String,
     val date: String,
