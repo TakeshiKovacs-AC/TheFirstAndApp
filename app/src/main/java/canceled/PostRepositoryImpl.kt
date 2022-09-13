@@ -1,7 +1,9 @@
-package ru.netology.myapp
+package canceled
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ru.netology.myapp.Post
+import ru.netology.myapp.PostRepository
 
 class PostRepositoryImpl : PostRepository {
 

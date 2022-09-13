@@ -2,16 +2,11 @@ package ru.netology.myapp
 
 import android.app.Application
 import android.content.Context
-import android.util.JsonReader
 import androidx.core.content.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-import org.json.JSONArray
 import kotlin.properties.Delegates
 
 class FilePreferenceRepository(
@@ -90,7 +85,6 @@ class FilePreferenceRepository(
     }
     private companion object {
         const val NEXT_ID_KEY = "nextID"
-        const val PREFS_KEY = "posts"
         const val FILE_NAME = "posts.json"
     }
 }

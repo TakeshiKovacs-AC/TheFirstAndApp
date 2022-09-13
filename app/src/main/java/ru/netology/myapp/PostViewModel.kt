@@ -3,7 +3,6 @@ package ru.netology.myapp
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 
 class PostViewModel (
     application: Application
@@ -27,9 +26,9 @@ class PostViewModel (
     }
 
     val shareEvent = SingleLiveEvent<Post>()
-    val navigateEvent = SingleLiveEvent<Unit>()
     val editEvent = SingleLiveEvent<String?>()
     val playVideo = SingleLiveEvent<String?>()
+    val checkById = SingleLiveEvent<Long?>()
 
     fun clickedSave(content: String) {
         if (content.isBlank()) return
@@ -46,10 +45,9 @@ class PostViewModel (
         thisPost.value = null
     }
 
-    private val thisPost = MutableLiveData<Post?>(null)
+    override fun choosePost (post: Post) {
 
-    fun clickAdd() {
-        navigateEvent.call()
     }
 
+    val thisPost = MutableLiveData<Post?>(null)
 }

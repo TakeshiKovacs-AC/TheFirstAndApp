@@ -1,15 +1,15 @@
-package ru.netology.myapp
+package canceled
 
 import android.app.Application
 import android.content.Context
-import android.util.JsonReader
 import androidx.core.content.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import org.json.JSONArray
+import ru.netology.myapp.Post
+import ru.netology.myapp.PostRepository
 import kotlin.properties.Delegates
 
 class PreferenceRepository(
