@@ -8,7 +8,6 @@ import androidx.activity.result.launch
 import androidx.activity.viewModels
 import ru.netology.myapp.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel: PostViewModel by viewModels()
         val adapter = PostsAdapter(viewModel)
-
 
         binding.postsRecycler.adapter = adapter
         viewModel.data.observe(this) { posts: List<Post> ->
@@ -28,21 +26,20 @@ class MainActivity : AppCompatActivity() {
             viewModel.clickAdd()
         }
 
-
-        viewModel.playVideo.observe(this) { video ->
+        viewModel.playVideo.observe(this) {
            val videoIntent = Intent().apply {
                action = Intent.ACTION_VIEW
-               data = Uri.parse(video)
+               data = Uri.parse(it)
            }
             val playVideoIntent = Intent.createChooser(videoIntent, "Проигрываем видео")
             startActivity(playVideoIntent)
         }
 
-        viewModel.shareEvent.observe(this) { post ->
+        viewModel.shareEvent.observe(this) {
             val intent = Intent().apply {
                 action = Intent.ACTION_SEND
                 type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, post.content)
+                putExtra(Intent.EXTRA_TEXT, it.content)
             }
             val shareIntent = Intent.createChooser(intent, getString(R.string.chooser_share_post))
             startActivity(shareIntent)
@@ -69,42 +66,6 @@ class MainActivity : AppCompatActivity() {
             postEditActivityLauncher.launch(it)
         }
     }
-
-//        binding.saveButton.setOnClickListener {
-//            with(binding.addedText) {
-//                val content = binding.addedText.text.toString()
-//                if (text.isNullOrBlank()) {
-//                    Toast.makeText(
-//                        this@MainActivity, "Пустая строка поста", Toast.LENGTH_SHORT
-//                    ).show()
-//                    return@setOnClickListener
-//                } else viewModel.clickedSave(content)
-//
-//                clearFocus()
-//                hideKeyboard()
-//                binding.fab.visibility = View.VISIBLE
-//            }
-//        }
-//        binding.addedText.setOnClickListener {
-//            binding.buttonsGroup.visibility = View.VISIBLE
-//            binding.fab.visibility = View.GONE
-//        }
-//
-//        binding.cancelEditButton.setOnClickListener {
-//            with(binding.addedText) {
-//                if (binding.addedText.text.isNullOrBlank()) {
-//                    binding.buttonsGroup.visibility = View.GONE
-//                    hideKeyboard()
-//                    binding.fab.visibility = View.VISIBLE
-//                }
-//                else binding.addedText.text = null
-//            }
-//        }
-
-//        viewModel.thisPost.observe(this) { thisPost ->
-//            binding.addedText.setText(thisPost?.content)
-//            binding.buttonsGroup.visibility = View.GONE
-//        }
 }
 
 
