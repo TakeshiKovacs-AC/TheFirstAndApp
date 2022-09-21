@@ -4,9 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 
-class PostViewModel (
+class PostViewModel(
     application: Application
-        ): AndroidViewModel(application), PostListener {
+) : AndroidViewModel(application), PostListener {
     private val repository: PostRepository = FilePreferenceRepository(application)
     val data = repository.getAll()
     override fun clickedLike(post: Post) = repository.like(post.id)
@@ -29,6 +29,7 @@ class PostViewModel (
     val editEvent = SingleLiveEvent<String?>()
     val playVideo = SingleLiveEvent<String?>()
     val checkById = SingleLiveEvent<Long?>()
+    val postClickEvent = SingleLiveEvent<Post>()
 
     fun clickedSave(content: String) {
         if (content.isBlank()) return
@@ -45,9 +46,9 @@ class PostViewModel (
         thisPost.value = null
     }
 
-    override fun choosePost (post: Post) {
-
+    override fun chooseThePost(post: Post) {
+        checkById.value = post.id
     }
 
-    val thisPost = MutableLiveData<Post?>(null)
+    private val thisPost = MutableLiveData<Post?>(null)
 }

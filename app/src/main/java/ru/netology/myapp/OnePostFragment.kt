@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import ru.netology.myapp.PostContentFragment.Companion.textArg
 import ru.netology.myapp.databinding.FragmentOnePostBinding
 
 class OnePostFragment: Fragment() {
@@ -26,11 +27,14 @@ class OnePostFragment: Fragment() {
 
         val viewHolder = PostsAdapter.ViewHolder(binding.onePost, viewModel)
 
+
+
         val postsList = viewModel.data.value
         if (postsList != null)
             for (post in postsList)
                 if (post.id == arguments?.longArg)
                     viewHolder.bind(post)
+
 
           return binding.root
     }

@@ -34,3 +34,4 @@ class AppActivity : AppCompatActivity() {
                     Bundle().apply { textArg = text })
         }
     }
+

@@ -78,6 +78,12 @@ class FilePreferenceRepository(
         }
     }
 
+    override fun checkPost(post: Post) {
+        posts = posts.map {
+            if(it.id == post.id) post else return
+        }
+    }
+
     private fun insert(post: Post) {
         posts = listOf(
             post.copy(id = ++nextId)

@@ -39,12 +39,6 @@ class FeedFragment : Fragment() {
             findNavController().navigate(R.id.feedFragment_to_postContentFragment)
         }
 
-        binding.root.setOnClickListener {
-            findNavController().navigate(R.id.feedFragment_to_onePostFragment)
-        }
-
-
-
         viewModel.playVideo.observe(viewLifecycleOwner) {
            val videoIntent = Intent().apply {
                action = Intent.ACTION_VIEW
@@ -76,6 +70,7 @@ class FeedFragment : Fragment() {
                     longArg
                 })
         }
+
         return binding.root
     }
 
