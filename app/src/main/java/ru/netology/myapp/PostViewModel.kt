@@ -15,7 +15,10 @@ class PostViewModel(
         shareEvent.value = post
     }
 
-    override fun clickedDelete(post: Post) = repository.delete(post.id)
+    override fun clickedDelete(post: Post) {
+        deleteById.value = post.id
+        repository.delete(post.id)
+    }
     override fun clickUpdate(post: Post) {
         thisPost.value = post
         editEvent.value = post.content
@@ -29,7 +32,7 @@ class PostViewModel(
     val editEvent = SingleLiveEvent<String?>()
     val playVideo = SingleLiveEvent<String?>()
     val checkById = SingleLiveEvent<Long?>()
-    val postClickEvent = SingleLiveEvent<Post>()
+    val deleteById = SingleLiveEvent<Long?>()
 
     fun clickedSave(content: String) {
         if (content.isBlank()) return

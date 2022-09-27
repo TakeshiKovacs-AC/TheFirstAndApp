@@ -26,11 +26,18 @@ class AppActivity : AppCompatActivity() {
         }
 
 //        обработка помещения текста интента во фрагмент добавления поста
-            val fragment =
+            val fragmentFeed =
                 supportFragmentManager.findFragmentById(R.id.navigation_fragment) as NavHostFragment
-            fragment.navController
+            fragmentFeed.navController
                 .navigate(
                     R.id.feedFragment_to_postContentFragment,
+                    Bundle().apply { textArg = text })
+
+            val fragmentOne =
+                supportFragmentManager.findFragmentById(R.id.navigation_fragment) as NavHostFragment
+            fragmentOne.navController
+                .navigate(
+                    R.id.onePostFragment_to_postContentFragment,
                     Bundle().apply { textArg = text })
         }
     }

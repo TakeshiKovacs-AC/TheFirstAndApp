@@ -24,5 +24,10 @@
     <fragment
         android:id="@+id/onePostFragment"
         android:name="ru.netology.myapp.OnePostFragment"
-        android:label="OnePostFragment" />
+        android:label="OnePostFragment"
+        tools:layout="@layout/post_item">
+        <action
+            android:id="@+id/onePostFragment_to_postContentFragment"
+            app:destination="@id/postContentFragment" />
+    </fragment>
 </navigation>

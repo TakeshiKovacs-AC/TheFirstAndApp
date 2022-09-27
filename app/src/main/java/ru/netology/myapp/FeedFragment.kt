@@ -67,7 +67,7 @@ class FeedFragment : Fragment() {
         viewModel.checkById.observe(viewLifecycleOwner) {
             findNavController().navigate(R.id.feedFragment_to_onePostFragment,
                 Bundle().apply {
-                    longArg
+                    it?.let {longArg = it}
                 })
         }
 
@@ -80,10 +80,10 @@ class FeedFragment : Fragment() {
             set(value) = putString(TEXT_KEY, value)
             get() = getString(TEXT_KEY)
 
-        private const val POST_KEY = "POST_KEY"
-        var Bundle.longArg: Long
-            set(value) = putLong(POST_KEY, value)
-            get() = getLong(POST_KEY)
+//        private const val POST_KEY = "POST_KEY"
+        var Bundle.longArg: Long by LongArguments
+//            set(value) = putLong(POST_KEY, value)
+//            get() = getLong(POST_KEY)
     }
 }
 
