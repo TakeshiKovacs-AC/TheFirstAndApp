@@ -1,4 +1,4 @@
-package ru.netology.myapp
+package canceled
 
 import android.content.Context
 import android.view.View

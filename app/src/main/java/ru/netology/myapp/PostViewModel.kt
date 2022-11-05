@@ -3,11 +3,10 @@ package ru.netology.myapp
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 
-class PostViewModel (
+class PostViewModel(
     application: Application
-        ): AndroidViewModel(application), PostListener {
+) : AndroidViewModel(application), PostListener {
     private val repository: PostRepository = FilePreferenceRepository(application)
     val data = repository.getAll()
     override fun clickedLike(post: Post) = repository.like(post.id)
@@ -16,7 +15,10 @@ class PostViewModel (
         shareEvent.value = post
     }
 
-    override fun clickedDelete(post: Post) = repository.delete(post.id)
+    override fun clickedDelete(post: Post) {
+        deleteById.value = post.id
+        repository.delete(post.id)
+    }
     override fun clickUpdate(post: Post) {
         thisPost.value = post
         editEvent.value = post.content
@@ -27,9 +29,10 @@ class PostViewModel (
     }
 
     val shareEvent = SingleLiveEvent<Post>()
-    val navigateEvent = SingleLiveEvent<Unit>()
     val editEvent = SingleLiveEvent<String?>()
     val playVideo = SingleLiveEvent<String?>()
+    val checkById = SingleLiveEvent<Long?>()
+    val deleteById = SingleLiveEvent<Long?>()
 
     fun clickedSave(content: String) {
         if (content.isBlank()) return
@@ -46,10 +49,9 @@ class PostViewModel (
         thisPost.value = null
     }
 
-    private val thisPost = MutableLiveData<Post?>(null)
-
-    fun clickAdd() {
-        navigateEvent.call()
+    override fun chooseThePost(post: Post) {
+        checkById.value = post.id
     }
 
+    private val thisPost = MutableLiveData<Post?>(null)
 }

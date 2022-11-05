@@ -54,6 +54,10 @@ class PostsAdapter(
                 Utils.figures(post.like)
             }
             binding.options.setOnClickListener { popupMenu.show() }
+
+            binding.root.setOnClickListener {
+                listener.chooseThePost(post)
+            }
         }
 
 
@@ -70,9 +74,10 @@ class PostsAdapter(
                     binding.video.visibility = View.GONE
                     binding.link.visibility = View.GONE
                 }
-                else
+                else {
                     binding.video.visibility = View.VISIBLE
                     binding.link.visibility = View.VISIBLE
+                }
             }
         }
     }

@@ -1,7 +1,9 @@
-package ru.netology.myapp
+package canceled
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ru.netology.myapp.Post
+import ru.netology.myapp.PostRepository
 
 class PostRepositoryImpl : PostRepository {
 
@@ -59,6 +61,12 @@ class PostRepositoryImpl : PostRepository {
     private fun update(post: Post) {
         data.value = posts.map {
             if(it.id == post.id) post else it
+        }
+    }
+
+    override fun checkPost(post: Post) {
+        posts = posts.map {
+            if(it.id == post.id) post else return
         }
     }
 
